@@ -11,19 +11,23 @@ void customerShowMenu()
 
 void managerShowMenu()
 {
-	cout << "1. Add/Delete materials" << endl;
-	cout << "2. Add/Delete dishes" << endl;
-	cout << "3. View materials, menu and cuctomers" << endl;
-	cout << "4. Modify cuctomers" << endl;
-	cout << "5. View Profits" << endl;
+	cout << "1. Add Materials" << endl;
+	cout << "2. Delete Materials" << endl;
+	cout << "3. Add Dishes" << endl;
+	cout << "4. Delete Dishes" << endl;
+	cout << "5. View materials, menu and cuctomers" << endl;
+	cout << "6. Add cuctomers" << endl;
+	cout << "7. Delete Customers" << endl;
+	cout << "8. View Profits" << endl;
 }
 
 void chefShowMenu()
 {
-	cout << "1. Add/Delete materials" << endl;
-	cout << "2. Add/Delete Dishes" << endl;
-	cout << "3. Browse Materials and Menu" << endl;
-}
+	cout << "1. Add Materials" << endl;
+	cout << "2. Delete Materials" << endl;
+	cout << "3. Add Dishes" << endl;
+	cout << "4. Delete Dishes" << endl;
+	cout << "5. View Materials and Dishes" << endl;
 
 struct rawMaterials
 {
@@ -74,7 +78,7 @@ void showMaterials(Materials* abs1)
 		for (int i = 0; i < abs1->m_size; i++)
 		{
 			cout << "Materials: " << abs1->materialarray[i].m_name << endl;
-			cout << "Expand of the materials£» " << abs1->materialarray[i].m_expand << endl;
+			cout << "Expand of the materialsÂ£Â» " << abs1->materialarray[i].m_expand << endl;
 		}
 	}
 }
