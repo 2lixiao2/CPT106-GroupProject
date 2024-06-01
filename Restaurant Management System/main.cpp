@@ -119,147 +119,110 @@ int isExist3(Customer* abs3, string c)
 	}
 }
 
-void addorDeleteMaterials(Materials* abs1)
+void addMaterials(Materials* abs1)
 {
-	cout << "1--Add" << endl;
-	cout << "2--Delete" << endl;
-	int a;
-	cin >> a;
-	while (true)
+	if (abs1->m_size == 1000)
 	{
-		switch (a)
-		{
-		case 1:
-		{
-			if (abs1->m_size == 1000)
-			{
-				cout << "Do not need to add materials" << endl;
-				return;
-			}
-			else
-			{
-				string addmaterial;
-				int budget;
-				cout << "Add new materials: " << endl;
-				cin >> addmaterial;
-				abs1->materialarray[abs1->m_size].m_name = addmaterial;
-				cout << "Expand of the material:  " << endl;
-				cin >> budget;
-				abs1->materialarray[abs1->m_size].m_expand = budget;
-
-				abs1->m_size++;
-				cout << "Successfully Add" << endl;
-
-				system("pause");
-				system("cls");
-			}
-		}
-		break;
-		case 2:
-		{
-			cout << "Enter the materials you want to delete" << endl;
-			string delematerial;
-			cin >> delematerial;
-			if (isExist1(abs1, delematerial) == -1)
-			{
-				cout << "materials can not be found" << endl;
-			}
-			else
-			{
-				cout << "materials is found" << endl;
-			}
-
-			int ret1 = isExist1(abs1, delematerial);
-			if (ret1 != -1)
-			{
-				for (int i = 0; i < abs1->m_size; i++)
-				{
-					abs1->materialarray[i] = abs1->materialarray[i + 1];
-				}
-				abs1->m_size--;
-				system("pause");
-				system("cls");
-			}
-
-		}
-		break;
-		default:
-			break;
-
-		}
+		cout << "Do not need to add materials" << endl;
+		return;
 	}
-	;
+	else
+	{
+		string addmaterial;
+		int budget;
+		cout << "Add new materials: " << endl;
+		cin >> addmaterial;
+		abs1->materialarray[abs1->m_size].m_name = addmaterial;
+		cout << "Expand of the material:  " << endl;
+		cin >> budget;
+		abs1->materialarray[abs1->m_size].m_expand = budget;
 
+		abs1->m_size++;
+		cout << "Successfully Add" << endl;
+
+		system("pause");
+		system("cls");
+	}
 }
 
-void addorDeleteDishes(Dish* abs2)
+void deleteMaterials(Materials* abs1)
 {
-	cout << "1--Add" << endl;
-	cout << "2--Delete" << endl;
-	int b;
-	cin >> b;
-	while (true)
+	cout << "Enter the materials you want to delete" << endl;
+	string delematerial;
+	cin >> delematerial;
+	if (isExist1(abs1, delematerial) == -1)
 	{
-		switch (b)
+		cout << "materials can not be found" << endl;
+	}
+	else
+	{
+		cout << "materials is found" << endl;
+	}
+
+	int ret1 = isExist1(abs1, delematerial);
+	if (ret1 != -1)
+	{
+		for (int i = 0; i < abs1->m_size; i++)
 		{
-		case 1:
+			abs1->materialarray[i] = abs1->materialarray[i + 1];
+		}
+		abs1->m_size--;
+		cout << "Successfully Deleting" << endl;
+		system("pause");
+		system("cls");
+	}
+}
+
+void addDishes(Dish* abs2)
+{
+	if (abs2->d_size == 1000)
+	{
+		cout << "Menu is full" << endl;
+		return;
+	}
+	else
+	{
+		string adddish;
+		int price;
+		cout << "Adding dishes:  " << endl;
+		cin >> adddish;
+		abs2->disharray[abs2->d_size].d_dishname = adddish;
+		cout << "Adding prices:  " << endl;
+		cin >> price;
+		abs2->disharray[abs2->d_size].d_price = price;
+
+		abs2->d_size++;
+		cout << "successfully adding" << endl;
+
+		system("pause");
+		system("cls");
+	}
+}
+
+void deleteDish(Dish* abs2)
+{
+	cout << "Enter the materials you want to delete" << endl;
+	string deledish;
+	cin >> deledish;
+	if (isExist2(abs2, deledish) == -1)
+	{
+		cout << "dishes can not be found" << endl;
+	}
+	else
+	{
+		cout << "dishes is found" << endl;
+	}
+
+	int ret2 = isExist2(abs2, deledish);
+	if (ret2 != -1)
+	{
+		for (int i = 0; i < abs2->d_size; i++)
 		{
-			if (abs2->d_size == 1000)
-			{
-				cout << "Menu is full" << endl;
-				return;
-			}
-			else
-			{
-				string adddish;
-				int price;
-				cout << "Adding dishes:  " << endl;
-				cin >> adddish;
-				abs2->disharray[abs2->d_size].d_dishname = adddish;
-				cout << "Adding prices:  " << endl;
-				cin >> price;
-				abs2->disharray[abs2->d_size].d_price = price;
-
-				abs2->d_size++;
-				cout << "successfully adding" << endl;
-
-				system("pause");
-				system("cls");
-			}
-
+			abs2->disharray[i] = abs2->disharray[i + 1];
 		}
-		break;
-		case 2:
-		{
-			cout << "Enter the materials you want to delete" << endl;
-			string deledish;
-			cin >> deledish;
-			if (isExist2(abs2, deledish) == -1)
-			{
-				cout << "dishes can not be found" << endl;
-			}
-			else
-			{
-				cout << "dishes is found" << endl;
-			}
-
-			int ret2 = isExist2(abs2, deledish);
-			if (ret2 != -1)
-			{
-				for (int i = 0; i < abs2->d_size; i++)
-				{
-					abs2->disharray[i] = abs2->disharray[i + 1];
-				}
-				abs2->d_size--;
-				system("pause");
-				system("cls");
-			}
-		}
-		break;
-		default:
-			break;
-
-		}
+		abs2->d_size--;
+		system("pause");
+		system("cls");
 	}
 }
 
@@ -279,69 +242,56 @@ void browseMaterial(Materials* abs1)
 	}
 }
 
-void ModifyCustomers(Customer* abs3)
+void addCustomers(Customer* abs3)
 {
-	cout << "1--Add" << endl;
-	cout << "2--Delete" << endl;
-	int c;
-	cin >> c;
-	while (true)
+	if (abs3->c_size = 1000)
 	{
-		switch (c)
-		{
-		case 1:
-		{
-			if (abs3->c_size = 1000)
-			{
-				cout << "No more customer for now" << endl;
-			}
-			else
-			{
-				string customername;
-				string phonenum;
-				cout << "Enter the last name: " << endl;
-				cin >> customername;
-				abs3->customerarray[abs3->c_size].c_lastname = customername;
-				cout << "Phone of the customer: " << endl;
-				cin >> phonenum;
-				abs3->customerarray[abs3->c_size].c_phone = phonenum;
+		cout << "No more customer for now" << endl;
+	}
+	else
+	{
+		string customername;
+		string phonenum;
+		cout << "Enter the last name: " << endl;
+		cin >> customername;
+		abs3->customerarray[abs3->c_size].c_lastname = customername;
+		cout << "Phone of the customer: " << endl;
+		cin >> phonenum;
+		abs3->customerarray[abs3->c_size].c_phone = phonenum;
 
-				abs3->c_size++;
-				cout << "succesfully adding" << endl;
+		abs3->c_size++;
+		cout << "succesfully adding" << endl;
 
-				system("pause");
-				system("cls");
-			}
-		}
-		break;
-		case 2:
+		system("pause");
+		system("cls");
+	}
+}
+
+void deleteCustomers(Customer* abs3)
+{
+	cout << "Enter the dish you want to delete" << endl;
+	string deletcustom;
+	cin >> deletcustom;
+	if (isExist3(abs3, deletcustom) == -1)
+	{
+		cout << "materials can not be found" << endl;
+	}
+	else
+	{
+		cout << "materials is found" << endl;
+	}
+
+	int ret3 = isExist3(abs3, deletcustom);
+	if (ret3 != -1)
+	{
+		for (int i = 0; i < abs3->c_size; i++)
 		{
-			cout << "Enter the dish you want to delete" << endl;
-			string deletcustom;
-			cin >> deletcustom;
-			if (isExist3(abs3, deletcustom) == -1)
-			{
-				cout << "materials can not be found" << endl;
-			}
-			else
-			{
-				cout << "materials is found" << endl;
-			}
-
-			int ret3 = isExist3(abs3, deletcustom);
-			if (ret3 != -1)
-			{
-				for (int i = 0; i < abs3->c_size; i++)
-				{
-					abs3->customerarray[i] = abs3->customerarray[i + 1];
-				}
-				abs3->c_size--;
-				system("pause");
-				system("cls");
-			}
+			abs3->customerarray[i] = abs3->customerarray[i + 1];
 		}
-		break;
-		}
+		abs3->c_size--;
+		cout << "Successfuly Deleting" << endl;
+		system("pause");
+		system("cls");
 	}
 }
 
@@ -399,12 +349,14 @@ void grossProfit(Materials* abs1, Dish* abs2)
 int main()
 {
 	int select;
+	
 	cout << "Classify your identity" << endl;
-	cout << "1---Customer" << endl;
-	cout << "2--Manager" << endl;
-	cout << "3---Chef" << endl;
-	cout << "0--Exit" << endl;
+	cout << "  1---Customer " << endl;
+	cout << "  2--Manager   " << endl;
+	cout << "  3---Chef    " << endl;
+	cout << "  0--Exit " << endl;
 	cin >> select;
+	
 
 	Materials abs1;
 	abs1.m_size = 0;
@@ -445,25 +397,34 @@ int main()
 			switch (choice2)
 			{
 			case 1:
-				addorDeleteMaterials(&abs1);
+				addMaterials(&abs1);
 				break;
 			case 2:
-				addorDeleteDishes(&abs2);
+				deleteMaterials(&abs1);
 				break;
 			case 3:
+				addDishes(&abs2);
+				break;
+			case 4:
+				deleteDish(&abs2);
+				break;
+			case 5:
 				browseMaterial(&abs1);
 				browseMenu(&abs2);
 				viewCustomer(&abs3);
 				break;
-			case 4:
-				ModifyCustomers(&abs3);
+			case 6:
+				addCustomers(&abs3);
 				break;
-			case 5:
+			case 7:
+				deleteCustomers(&abs3);
+				break;
+			case 8:
 				grossProfit(&abs1, &abs2);
 				break;
 			}
 		}
-		break;
+			break;
 		case 3:
 		{
 			chefShowMenu();
@@ -472,25 +433,33 @@ int main()
 			switch (choice3)
 			{
 			case 1:
-				addorDeleteMaterials(&abs1);
+				addMaterials(&abs1);
 				break;
 			case 2:
-				addorDeleteDishes(&abs2);
+				deleteMaterials(&abs1);
 				break;
 			case 3:
+				addDishes(&abs2);
+				break;
+			case 4:
+				deleteDish(&abs2);
+				break;
+			case 5:
 				browseMaterial(&abs1);
 				browseMenu(&abs2);
 				break;
 			}
-		}
-		break;
+		}			
+			break;
 		case 0:
+			system("pause");
+			return 0;
 			break;
 		default:
 			break;
 		}
 	}
-
+	
 
 
 
